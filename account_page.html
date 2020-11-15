@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANKit Account Page</title>
+    <style>
+        body{
+            background-color: #a9f5ba ;
+            margin: 1;
+            padding: 0;
+        }
+        h4 {
+            color: green;
+            padding-left: 20px;
+        }
+        section{
+        }
+        nav{
+            display:inline;
+
+        }
+        .userContainer{
+            border: 1px solid black;
+            background-color: lightgray;
+            width: 220px;
+            border-radius: 30px;
+            padding: 20px;
+            color: blue;
+            display: inline-block;
+        }
+        .buttonContainer{
+            margin-left: 10%;
+        }
+        button{
+            border:none;
+            background: white;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+        .Sign_Out{
+            color: red;
+            background-color: white;
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+        }
+        .Sign_Out:hover{
+            background-color: lightgrey;
+            color: red;
+        }
+        .dashboard{
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+        }
+        .dashboard:hover{
+            background-color: lightgrey;
+        }
+        .Transfer{
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+        }
+        .Transfer:hover{
+            background-color: lightgrey;
+        }
+        .Account_Settings{
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+        }
+        .Account_Settings:hover{
+            background-color: lightgrey;
+        }
+        .Contact{
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+        }
+        .Contact:hover{
+            background-color: lightgrey;
+        }
+        .tempValue{
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h4><em>BANKit</h4>
+    <section>
+        <h1> Account Homepage</h1>
+        <nav class="userContainer">
+        <nav>User: </nav>
+        <nav class="tempValue">ExampleUser</nav>
+        <br/>
+        <nav>Account Number: </nav>
+        <nav class="tempValue">01234567</nav>
+        </nav>
+        <nav class="buttonContainer">
+        <button class="dashboard" onclick="show_dashboard" > Dashboard</button>
+        <button class="Transfer"> Transfer</button>
+        <button class="Account_Settings"> Account Settings</button>
+        <button class="Contact"> Contact</button>
+        <a href="landing_page.html">
+            <button class="Sign_Out"> Sign Out</button>
+            </a>
+        <!--<button class="Sign_Out" onclick="sign_out" type="button"> Sign Out</button> -->
+    </nav>
+</section>
+
+<script>
+
+function show_dashboard(){
+
+        }
+function sign_out(){
+
+}
+
+
+
+</script>
+</body>
+</html>
