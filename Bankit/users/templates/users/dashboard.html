@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANKit Account Page</title>
+    <style>
+        .tabs {
+        position: relative;
+        min-height: 200px; /* This part sucks */
+        clear: both;
+        margin: 15px 0;
+        height: 400px;
+        }
+        .tab {
+        float: left;
+        
+        }
+        .tab label {
+        background: #eee;
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin-left: -1px;
+        position: relative;
+        left: 1px;
+        }
+        .tab [type="radio"] {
+        opacity: 0;
+        }
+        .content {
+        position: absolute;
+        top: 28px;
+        left: 0;
+        background: white;
+        right: 0;
+        bottom:0;
+        padding: 20px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        }
+        .content > * {
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: all 0.6s ease;
+        }
+        [type="radio"]:focus ~ label {
+        outline: 2px solid blue;
+        }
+        [type="radio"]:checked ~ label {
+        background: white;
+        border-bottom: 1px solid white;
+        z-index: 2;
+        }
+        [type="radio"]:checked ~ label ~ .content {
+        z-index: 1;
+        }
+        [type="radio"]:checked ~ label ~ .content > * {
+        opacity: 1;
+        transform: translateX(0);
+        }
+        h4 {
+            color: green;
+        }
+        .header {
+  border: 1px solid black;
+  padding-right: 0px;
+  padding-left: 28px;
+  border-radius: 5px;
+  background-color: lightgray;
+}
+.value{
+    background-color: red;
+    padding: 10px;
+
+}
+th{
+    background-color:lightgray;
+    border: 1px solid black;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 7px;
+  border-radius: 5px;
+  text-align: left;
+ 
+}
+
+td{
+padding: 5px;
+margin: 10px;
+}
+#table1 td{
+  border-bottom: thin solid black;
+}
+#table1 td:last-child{
+  border-right: thin solid black;
+}
+#table1 td:first-child{
+  border-left: thin solid black;
+}
+
+    </style>
+</head>
+<body>
+    <h4><em>BANKit</h4>
+    <h1> Account Homepage</h1>
+
+    <div class="tabs">
+        <div class="tab">
+          <input type="radio" id="tab-1" name="tab-group-1" checked>
+          <label for="tab-1">Dashboard</label>
+          <div class="content">
+            <p>Stuff for Dashboard</p>
+            <p>Show a table that includes the recent transactions(Deposits, withdrawals, transfers)</p>
+            <!-- Deposits table -->
+            <table cellspacing="0" id="table1" style="width:100%">
+                <tr>
+                  <th colspan="3">Deposits</th>
+                </tr>
+                <tr >
+                    <td style= "text-align: center;color: gray">Transaction Type</td>
+                    <td style= "text-align: right;color:gray" >Date</td>
+                    <td style= "text-align: right;color:gray" >Amount</td>
+                </tr>
+                <tr>
+                  <td>Deposit</td>
+                  <td style="text-align: right;">November 27,2020</td>
+                  <td style="text-align: right;"> $100.00</td>
+                </tr>
+                <tr>
+                  <td>Withdraw</td>
+                  <td style="text-align: right;">November 27,2020</td>
+                  <td style="text-align: right;"> $100.00</td>
+                </tr>
+                <tr>
+                  <td>Transfer</td>
+                  <td style="text-align: right;">November 27,2020</td>
+                  <td style="text-align: right;"> $100.00</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><a href="homepage.html">expand</a></td>
+                </tr>
+              </table>
+
+            </br>
+                        <!-- 
+                    Withdraw table
+              <table cellspacing="0" id="table2" style="width:100%">
+                <tr>
+                  <th colspan="3">Withdrawals</th>
+                </tr>
+                
+                <tr>
+                  <td>test</td>
+                  <td style="text-align: right;">November 27,2020</td>
+                  <td style="text-align: right;">$100.00</td>
+                </tr>
+                
+              </table>
+
+            </br>
+Transfer table 
+              <table cellspacing="0" id="table3" style="width:100%">
+                <tr>
+                  <th colspan="3">Transfers</th>
+                </tr>
+                <tr>
+                  <td>test</td>
+                  <td style="text-align: right;">November 27,2020</td>
+                  <td style="text-align: right;">$100.00</td>
+                </tr>
+-->
+
+              </table>
+
+          </div>
+        </div>
+        <div class="tab">
+          <input type="radio" id="tab-2" name="tab-group-1">
+          <label for="tab-2">Transfer</label>
+          <div class="content">
+                <p>
+                    Stuff for Transfer: <br>
+                    Input field for amount to transfer, 
+                    Input field for acct # to transfer to, 
+                    Button for submission
+                </p>
+                <input class="inputField" type="text" placeholder="Account Number" required>
+                <input class="inputField" type="text" placeholder="Amount" required>
+                <button class="Contact"> Submit</button>
+
+          </div>
+        </div>
+        <div class="tab">
+            <input type="radio" id="tab-3" name="tab-group-1">
+            <label for="tab-3">Withdraw</label>
+            <div class="content">
+                <p>
+                    Stuff for withdraw: <br>
+                    Input field for amount to withdraw, 
+                    Input field for acct # to withdraw from, 
+                    Button for submission
+                </p>
+                <input class="inputField" type="text" placeholder="Account Number" required>
+                <input class="inputField" type="text" placeholder="Amount" required>
+                <button class="Contact"> Submit</button>
+
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" id="tab-4" name="tab-group-1">
+            <label for="tab-4">Deposit</label>
+            <div class="content">
+                <p>
+                    Stuff for deposit: <br>
+                    Input field for amount to deposit, 
+                    Input field for acct # to deposit to, 
+                    Button for submission
+                </p>
+                <input class="inputField" type="text" placeholder="Account Number" required>
+                <input class="inputField" type="text" placeholder="Amount" required>
+                <button class="Contact"> Submit</button>
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" id="tab-5" name="tab-group-1">
+            <label for="tab-5">ATM</label>
+            <div class="content">
+                <p>Find an ATM</p>
+                <ul>test </ul>
+
+            </div>
+        </div>
+        <div class="tab">
+          <input type="radio" id="tab-6" name="tab-group-1">
+          <label for="tab-6">Settings</label>
+          <div class="content">
+            <p>Stuff for Settings</p>
+            <button class="Contact"> Submit</button>
+          </div>
+        </div>
+        <div class="tab">
+            <input type="radio" id="tab-7" name="tab-group-1">
+            <label for="tab-7">Logout</label>
+        </div>
+      </div>
+</body>
+
+
+</html>
