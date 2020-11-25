@@ -29,12 +29,12 @@ def registerHome(request):
     return render(request, 'users/register.html', context)
 
 
+@login_required
 def User_Dashboard(request):
 
     return render(request, 'users/dashboard.html')
 
 
-@login_required
 def loginHome(request):
 
     if request.method == "POST":
