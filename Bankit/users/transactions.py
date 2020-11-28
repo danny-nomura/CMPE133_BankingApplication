@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from .models import Account, History
 
 
-def transfer(amount, user, account_number_from, routing_number_to):
+def transfer(user, amount, account_number_from, routing_number_to):
     account_from = Account.objects.filter(account_number=account_number_from)
     account_to = Account.object.filter(routing_number=routing_number_to)
 
@@ -22,10 +22,10 @@ def transfer(amount, user, account_number_from, routing_number_to):
         account_to.balance += amount
         account_from.save()
         account_to.save()
-        log_transaction()
+        _log_transaction()
 
 
-def deposit(amount, user, routing_number_to):
+def deposit(user, amount, routing_number_to):
     account_to = Account.object.filter(routing_number=routing_number_to)
 
     if amount is None:
@@ -35,10 +35,10 @@ def deposit(amount, user, routing_number_to):
     else:
         account_to += amount
         account_to.save()
-        log_transaction() 
+        _log_transaction() 
 
 
-def withdraw(amount, user, account_number_from):
+def withdraw(user, amount, account_number_from):
     account_from = Account.objects.filter(account_number=account_number_from)
 
     if amount is None:
@@ -52,8 +52,8 @@ def withdraw(amount, user, account_number_from):
     else:
         account_from.balance -= amount
         account_from.save()
-        log_transaction()
+        _log_transaction()
 
 
-def log_transaction():
+def _log_transaction():
     return
