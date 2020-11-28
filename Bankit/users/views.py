@@ -1,21 +1,16 @@
-
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
-from django.contrib.auth import authenticate, login, logout
 
-from django.contrib import messages
-
-
-# Create your views here.
 from .forms import CreateUserForm
-from .models import *
-from django.contrib.auth.decorators import login_required
 
 
-def registerHome(request):
+def register_home(request):
 
     form = CreateUserForm()
 
@@ -29,13 +24,14 @@ def registerHome(request):
     return render(request, 'users/register.html', context)
 
 
-def User_Dashboard(request):
+@login_required
+def user_dashboard(request):
+    #user = request.user
 
     return render(request, 'users/dashboard.html')
 
 
-@login_required
-def loginHome(request):
+def login_home(request):
 
     if request.method == "POST":
         username = request.POST.get('username')
