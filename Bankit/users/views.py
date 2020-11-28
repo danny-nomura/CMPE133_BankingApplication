@@ -27,12 +27,11 @@ def register_home(request):
 @login_required
 def user_dashboard(request):
     #user = request.user
-
     return render(request, 'users/dashboard.html')
 
 
-def login_home(request):
 
+def login_home(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
