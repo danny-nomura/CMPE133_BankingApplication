@@ -1,15 +1,11 @@
-
 from django.urls import path
-
-
 from django.http import HttpResponse
-from. import views
+
+from . import views
+
 
 urlpatterns = [
-
-    path('', views.registerHome, name='register'),
-    path('login/', views.loginHome, name='login'),
-    path('dashboard/', views.User_Dashboard, name='Dashboard')
-
-
+    path('', views.register_home, name='register'),
+    path('login/', views.login_home, name='login'),
+    path('dashboard/', views.user_dashboard, name='Dashboard'),
 ]
