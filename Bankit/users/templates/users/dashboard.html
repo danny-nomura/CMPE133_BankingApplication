@@ -299,6 +299,17 @@
           </a>
         </div>
       </div>
+
+  <!-- temp code by dylan remove later -->
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+  <!-- end temp code by dylan -->
+
 </body>
 <style>
   h4{
