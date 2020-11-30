@@ -17,7 +17,7 @@
     <a class="navbar-item" href="/deposit">Deposit</a>
     <a class="navbar-item" href="/atm">ATM</a>
     <a class="navbar-item" href="/settings">Settings</a>
-    <a class="navbar-item" href="/login">Sign Out</a>
+    <a class="navbar-item" href="/logout">Sign Out</a>
   </div>
   <div class="page-content">
     <div class="enable-email-notif" style="width:400px; float:left; text-align: center;">
@@ -107,6 +107,9 @@
       </table>
     </div>
   </div>
+  {% for message in messages %}
+    <p>{{message}}</p>
+  {% endfor %}
 </body>
 <style>
   .titlebar {

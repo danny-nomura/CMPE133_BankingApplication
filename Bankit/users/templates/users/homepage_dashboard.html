@@ -17,7 +17,7 @@
     <a class="navbar-item" href="/deposit">Deposit</a>
     <a class="navbar-item" href="/atm">ATM</a>
     <a class="navbar-item" href="/settings">Settings</a>
-    <a class="navbar-item" href="/login">Sign Out</a>
+    <a class="navbar-item" href="/logout">Sign Out</a>
   </div>
   <div class="page-content">
     <!-- Deposits table -->
@@ -52,7 +52,9 @@
         </tr>
       </table>
   </div>
-
+  {% for message in messages %}
+    <p>{{message}}</p>
+  {% endfor %}
 </body>
 <style>
   .titlebar {

@@ -5,12 +5,14 @@ from django.contrib.auth.models import User
 
 class Account(models.Model):
     account_number  = models.IntegerField(primary_key=True)
-    routing_number  = models.IntegerField(unique=True)
     user_id         = models.ForeignKey(User, on_delete=models.CASCADE)
     balance         = models.DecimalField(max_digits=20, decimal_places=2)
 
     def __str__(self):
-        return self.account_number
+        return str(self.account_number)
+    
+    class Meta:
+        db_table='users_account'
 
 
 class History(models.Model):
@@ -24,3 +26,9 @@ class History(models.Model):
     datetime        = models.DateTimeField(default=timezone.now)
     transaction_type= models.CharField(max_length=1, choices=TRANSACTION_TYPES)
     amount          = models.DecimalField(max_digits=20, decimal_places=2)
+    description     = models.CharField(max_length=256, default="empty")
+
+    def __str__(self):
+        return str(self.user_id) + " " + str(self.datetime) + " $" + str(self.amount)
+    class Meta:
+        db_table='users_history'

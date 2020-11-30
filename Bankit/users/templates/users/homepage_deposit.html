@@ -17,72 +17,77 @@
     <a class="navbar-item" href="/deposit">Deposit</a>
     <a class="navbar-item" href="/atm">ATM</a>
     <a class="navbar-item" href="/settings">Settings</a>
-    <a class="navbar-item" href="/login">Sign Out</a>
+    <a class="navbar-item" href="/logout">Sign Out</a>
   </div>
   <div class="page-content">
     <!-- table for Deposit-->
     <table cellspacing="0" id="pagetable" style="width:100%">
-      <tr id="row_1" >
-        <td > 
-          <table id="tableintable" style="width: 400px; margin: auto; border-radius: 10px;">
-            <tr >
-              <td style="text-align: left;"> Account To :</td>
-              <td style="text-align: right;">
-                <input class="inputField" name="account_to" type="text" placeholder="Account #" required style="justify-content: right;">
-              </td>
-            </tr>
-          </table>
-        </td>                
-      </tr>
-      <tr id="row_2">
-        <td>
-          <table id="tableintable" style="width: 400px; margin: auto; border-radius: 10px;">
-            <tr>
-              <td style="text-align: left;"> Deposit Amount :</td>
-              <td style="text-align: right;">
-                <input class="inputField" name="amount" type="text" placeholder="Amount ($)" required>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr id="row_3">                
-        <td>
-          <table id="tableintable" style="width: 400px; margin: auto; border-radius: 10px;" >
-            <tr>
-              <td style="text-align: left;"> Confirm Deposit Amount :</td>
-              <td style="text-align: right;">
-                <input class="inputField" name="confirm_amount" type="text" placeholder="Amount ($)" required>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr id="row_4">
-        <td style= "text-align: center;color: gray">&nbsp;</td>
-        <td style= "text-align: right;color:gray">&nbsp;</td>
-      </tr>
-      <tr id="row_5">
-        <td>&nbsp;</td>
-        <td style="text-align: right;">&nbsp;</td>
-      </tr>
-      <tr id="row_6">                
-        <td style="align-items: center;"> 
-          <table style="width: 100%;">
-            <tr>
-              <td style="text-align: center;">
-                <div style="max-width: 200px; margin: auto;">
-                  <button class="submit-clear-button" style="background-color:green; width: 200px;">Submit</button>
-                  <button class="submit-clear-button" style="background-color: red; width: 200px">Clear</button>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
+      <form method="POST" action="">
+        {% csrf_token %}
+        <tr id="row_1" >
+          <td > 
+            <table id="tableintable" style="width: 400px; margin: auto; border-radius: 10px;">
+              <tr >
+                <td style="text-align: left;"> Account To :</td>
+                <td style="text-align: right;">
+                  <input class="inputField" name="account_to" type="number" placeholder="Account #" required style="justify-content: right;">
+                </td>
+              </tr>
+            </table>
+          </td>                
+        </tr>
+        <tr id="row_2">
+          <td>
+            <table id="tableintable" style="width: 400px; margin: auto; border-radius: 10px;">
+              <tr>
+                <td style="text-align: left;"> Deposit Amount :</td>
+                <td style="text-align: right;">
+                  <input class="inputField" name="amount" type="number" min="0.01" step="0.01" placeholder="Amount ($)" required>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr id="row_3">                
+          <td>
+            <table id="tableintable" style="width: 400px; margin: auto; border-radius: 10px;" >
+              <tr>
+                <td style="text-align: left;"> Confirm Deposit Amount :</td>
+                <td style="text-align: right;">
+                  <input class="inputField" name="confirm_amount" type="number" min="0.01" step="0.01" placeholder="Amount ($)" required>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr id="row_4">
+          <td style= "text-align: center;color: gray">&nbsp;</td>
+          <td style= "text-align: right;color:gray">&nbsp;</td>
+        </tr>
+        <tr id="row_5">
+          <td>&nbsp;</td>
+          <td style="text-align: right;">&nbsp;</td>
+        </tr>
+        <tr id="row_6">                
+          <td style="align-items: center;"> 
+            <table style="width: 100%;">
+              <tr>
+                <td style="text-align: center;">
+                  <div style="max-width: 200px; margin: auto;">
+                    <button class="submit-clear-button" style="background-color:green; width: 200px;">Submit</button>
+                    <button class="submit-clear-button" style="background-color: red; width: 200px">Clear</button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </form>
     </table>
   </div>
-
+  {% for message in messages %}
+    <p>{{message}}</p>
+  {% endfor %}
 </body>
 <style>
   .titlebar {
@@ -143,6 +148,13 @@
     padding-left: 30%;
     padding-right: 30%;
   }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
 </style>
 
 </html>
