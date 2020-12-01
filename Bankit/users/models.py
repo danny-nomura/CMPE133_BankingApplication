@@ -19,7 +19,7 @@ class History(models.Model):
     TRANSACTION_TYPES = (
         ('T', 'Transfer'),
         ('D', 'Deposit'),
-        ('W', 'Withdraw'),
+        ('W', 'Withdrawal'),
     )
 
     account_number  = models.ForeignKey(Account, on_delete=models.CASCADE)
