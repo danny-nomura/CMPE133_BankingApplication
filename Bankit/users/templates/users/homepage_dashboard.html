@@ -1,4 +1,4 @@
-account<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,8 +21,8 @@ account<!DOCTYPE html>
   </div>
   <div class="page-content">
     <!-- History table -->
-    <p>Account Balance: {{accou}}</p>
-    
+    <p>Account Number: {{account_number}}</p>
+    <p>Balance: ${{balance}}</p>
     <table>
       <thead>
         <tr>
@@ -40,7 +40,7 @@ account<!DOCTYPE html>
           <td>{{h.account_number}}</td>
           <td>{{h.datetime}}</td>
           <td>{{h.get_transaction_type_display}}</td>
-          <td>{{h.amount}}</td>
+          <td>${{h.amount}}</td>
           <td>{{h.description}}</td>
         </tr>
       {% endfor %}
