@@ -20,8 +20,8 @@
     <a class="navbar-item" href="/logout">Sign Out</a>
   </div>
   <div class="page-content">
-    <div class="enable-email-notif" style="width:400px; float:left; text-align: center;">
-      <p>Update email notification settings</p>
+    <div class="enable-email-notif" style="width:400px; text-align: center;">
+      <h4 style="text-decoration: underline;">Update email linked with your BANKit account</h4>
       <!--left table-->
       <form method="POST" action="">
         {% csrf_token %}
@@ -30,7 +30,7 @@
             <td > 
               <table id="tableintable" style="width: 300px; margin: auto; border-radius: 10px;">
                 <tr >
-                  <td style="text-align: left;"> Email:</td>
+                  <td style="text-align: left;"> New Email:</td>
                   <td style="text-align: right;">
                     <input class="inputField" name="email1" type="text" placeholder="Email Address" style="justify-content: right;">
                   </td>
@@ -56,7 +56,7 @@
                 <tr>
                   <td style="text-align: center;">
                     <div style="max-width: 200px; margin: auto;">
-                      <button id="enable_email_notifications" name="email_button" type="submit" value="1" class="submit-clear-button" style="background-color:green; width: 200px;">Enable Email Notifications</button>
+                      <button id="enable_email_notifications" name="email_button" type="submit" value="1" class="submit-clear-button" style="background-color:green; width: 200px;">Change email</button>
                     </div>
                   </td>
                 </tr>
@@ -105,6 +105,8 @@
     padding: 20px;
     border: 1px solid #ccc;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
   }
   th{
     background-color:lightgray;

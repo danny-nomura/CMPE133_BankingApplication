@@ -21,8 +21,11 @@
   </div>
   <div class="page-content">
     <!-- History table -->
-    <p>Account Number: {{account_number}}</p>
-    <p>Balance: ${{balance}}</p>
+    <div class="account_info">
+      <h4>Account Number: {{account_number}}<h4>
+      <h4>Balance: ${{balance}}</h4>
+    </div>
+    
     <table>
       <thead>
         <tr>
@@ -53,10 +56,13 @@
   {% endfor %}
 </body>
 <style>
+  .account_info{
+    text-align: center;
+    text-decoration: underline;
+  }
   .titlebar {
     color:black;
     background-color: #a9f5ba;
-    width:fit-content;
     overflow: hidden;
     text-align: center;
     max-height: 130px;
@@ -87,18 +93,22 @@
     border: 1px solid #ccc;
     overflow: hidden;
   }
+  table{
+    width: 100%;
+    border: 1px solid black;
+  }
   th{
     background-color:lightgray;
-    border: 1px solid black;
+    border-bottom: dotted black;
     padding-top: 7px;
     padding-bottom: 7px;
-    padding-left: 7px;
-    border-radius: 5px;
-    text-align: left;
+    text-align: center;
   }
   td{
     padding: 5px;
     margin: 10px;
+    text-align: center;
+    border-bottom: thin dashed black;
   }
   #pagetable td{
     border-bottom: thin solid black;
