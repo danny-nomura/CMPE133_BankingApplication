@@ -11,6 +11,7 @@ from django.core.exceptions import ValidationError
 
 from .forms import CreateUserForm
 from . import transactions
+from .models import History, Account
 
 
 def register_home(request):
@@ -50,7 +51,9 @@ def login_home(request):
 
 @login_required
 def user_dashboard(request):
-    return render(request, 'users/homepage_dashboard.html')
+    number = Account.objects.get(user_id=request.user).account_number
+    history = History.objects.filter(account_number=number)
+    return render(request, 'users/homepage_dashboard.html', {'history': history})
 
 
 @login_required
@@ -96,4 +99,3 @@ def user_withdraw(request):
     if request.method == 'POST':
         transactions.withdraw(request)
     return render(request, 'users/homepage_withdraw.html')
-
