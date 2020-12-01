@@ -70,7 +70,7 @@ def deposit(request):
             account_number=account_to, 
             transaction_type="D",
             amount=amount,
-            description="Deposit",
+            description="-",
         )
         new_transaction.save()
         messages.success(request, "Successfully deposited ${} to account number {}."
@@ -103,7 +103,7 @@ def withdraw(request):
             account_number=account_from, 
             transaction_type="W",
             amount=amount*-1,
-            description="Withdrawal",
+            description="-",
         )
         new_transaction.save()
         messages.success(request, 'Successfully withdrew ${} from account {}.'
