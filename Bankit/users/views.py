@@ -40,6 +40,8 @@ def login_home(request):
         if user is not None:
             login(request, user)
             return redirect("Dashboard")
+        else:
+            messages.error(request, "Invalid Username or Password")
 
     context = {}
 
