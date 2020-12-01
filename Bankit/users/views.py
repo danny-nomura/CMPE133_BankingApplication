@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 
 from .forms import CreateUserForm
 from . import transactions
@@ -51,6 +53,19 @@ def user_dashboard(request):
 
 @login_required
 def user_settings(request):
+    if request.method == 'POST':
+        if request.POST.get('email_button'):
+            email = request.POST.get('email1')
+            if email == request.POST.get('email2'):
+                try:
+                    validate_email(email)
+                    request.user.email = email
+                    request.user.save()
+                    messages.info(request, "Successfully changed email!")
+                except ValidationError:
+                    messages.error(request, "Invalid email. Try again.")
+            else:
+                messages.error(request, "Invalid email. Try again.")
     return render(request, 'users/homepage_settings.html')
 
 
@@ -64,7 +79,6 @@ def user_logout(request):
 def user_deposit(request):
     if request.method == 'POST':
         transactions.deposit(request)
-        return render(request, 'users/homepage_deposit.html')
     return render(request, 'users/homepage_deposit.html')
 
 
@@ -72,7 +86,6 @@ def user_deposit(request):
 def user_transfer(request):
     if request.method == 'POST':
         transactions.transfer(request)
-        return render(request, 'users/homepage_transfer.html')
     return render(request, 'users/homepage_transfer.html')
 
 
@@ -80,6 +93,5 @@ def user_transfer(request):
 def user_withdraw(request):
     if request.method == 'POST':
         transactions.withdraw(request)
-        return render(request, 'users/homepage_withdraw.html')
     return render(request, 'users/homepage_withdraw.html')
 
