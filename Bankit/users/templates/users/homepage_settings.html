@@ -16,7 +16,6 @@
     <a class="navbar-item" href="/transfer">Transfer</a>
     <a class="navbar-item" href="/withdraw">Withdraw</a>
     <a class="navbar-item" href="/deposit">Deposit</a>
-    <a class="navbar-item" href="/atm">ATM</a>
     <a class="navbar-item" href="/settings">Settings</a>
     <a class="navbar-item" href="/logout">Sign Out</a>
   </div>
@@ -31,7 +30,7 @@
             <td > 
               <table id="tableintable" style="width: 300px; margin: auto; border-radius: 10px;">
                 <tr >
-                  <td style="text-align: left;"> Email :</td>
+                  <td style="text-align: left;"> Email:</td>
                   <td style="text-align: right;">
                     <input class="inputField" name="email1" type="text" placeholder="Email Address" style="justify-content: right;">
                   </td>
@@ -43,7 +42,7 @@
             <td > 
               <table id="tableintable" style="width: 300px; margin: auto; border-radius: 10px;">
                 <tr >
-                  <td style="text-align: left;"> Confirm Email :</td>
+                  <td style="text-align: left;"> Confirm Email:</td>
                   <td style="text-align: right;">
                     <input class="inputField" name="email2" type="text" placeholder="Email Address" style="justify-content: right;">
                   </td>
@@ -67,49 +66,6 @@
         </table>
       </form>
     </div>
-    <!--right table-->
-    <div class="enable-text-notif" style="width:400px; float: right; text-align: center;">
-      <p>Update text notification settings</p>
-      <table cellspacing="0" id="pagetable" style="width:100%">
-        <tr id="t_row_1" >
-          <td > 
-            <table id="tableintable" style="width: 300px; margin: auto; border-radius: 10px;">
-              <tr >
-                <td style="text-align: left;"> Phone # :</td>
-                <td style="text-align: right;">
-                  <input class="inputField" name="sms1"type="text" placeholder="SMS" style="justify-content: right;">
-                </td>
-              </tr>
-            </table>
-          </td>                
-        </tr>
-        <tr id="t_row_2" >
-          <td > 
-            <table id="tableintable" style="width: 300px; margin: auto; border-radius: 10px;">
-              <tr >
-                <td style="text-align: left;"> Confirm Phone # :</td>
-                <td style="text-align: right;">
-                  <input class="inputField" name="sms2" type="text" placeholder="SMS" style="justify-content: right;">
-                </td>
-              </tr>
-            </table>
-          </td>                
-        </tr>
-        <tr id="row_6">                
-          <td style="align-items: center;"> 
-            <table style="width: 100%;">
-              <tr>
-                <td style="text-align: center;">
-                  <div style="max-width: 200px; margin: auto;">
-                    <button id="enable_text_notifications" name="sms_button" class="submit-clear-button" style="background-color:green; width: 200px;">Enable Text Notifications</button>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-    </div>
   </div>
   {% for message in messages %}
     <p>{{message}}</p>
@@ -122,7 +78,7 @@
     width:fit-content;
     overflow: hidden;
     text-align: center;
-    max-height: 100px;
+    max-height: 130px;
     position:sticky;
   }
   .navbar{
