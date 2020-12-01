@@ -9,8 +9,6 @@ from .models import Account, History
 
 
 def transfer(request):
-    account_to = None
-    account_from = None
     amount = Decimal(request.POST.get('amount'))
     error = False
 
@@ -57,7 +55,6 @@ def transfer(request):
             .format(amount, mask_account_number(account_from.account_number), mask_account_number(account_to.account_number)))
 
 def deposit(request):
-    account_to = None
     amount = Decimal(request.POST.get('amount'))
     error = False
     
