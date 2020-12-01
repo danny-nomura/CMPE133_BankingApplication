@@ -3,23 +3,28 @@ from decimal import Decimal
 
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Account, History
 
 
 def transfer(request):
-    account_from = Account.objects.get(account_number=request.POST.get('account_from'))
-    account_to = Account.objects.get(account_number=request.POST.get('account_to'))
+    account_to = None
+    account_from = None
     amount = Decimal(request.POST.get('amount'))
-
     error = False
-    if not account_from:
+
+    try:
+        account_from = Account.objects.get(account_number=request.POST.get('account_from'))
+    except ObjectDoesNotExist:
         messages.error(request, "Account {} not found."
-            .format(mask_account_number(account_from.account_number)))
+            .format(request.POST.get('account_from')))
         return
-    if not account_to:
+    try:
+        account_to = Account.objects.get(account_number=request.POST.get('account_to'))
+    except ObjectDoesNotExist:
         messages.error(request, "Account {} not found."
-            .format(mask_account_number(account_to.account_number)))
+            .format(request.POST.get('account_to')))
         return
     if account_from.balance < amount:
         messages.error(request, "Your balance is too low.")
@@ -52,13 +57,15 @@ def transfer(request):
             .format(amount, mask_account_number(account_from.account_number), mask_account_number(account_to.account_number)))
 
 def deposit(request):
-    account_to = Account.objects.get(account_number=request.POST.get('account_to'))
+    account_to = None
     amount = Decimal(request.POST.get('amount'))
     error = False
     
-    if not account_to:
+    try:
+        account_to = Account.objects.get(account_number=request.POST.get('account_to'))
+    except ObjectDoesNotExist:
         messages.error(request, "Account {} not found."
-            .format(mask_account_number(account_to.account_number)))
+            .format(request.POST.get('account_to')))
         return
     if amount != Decimal(request.POST.get('confirm_amount')):
         messages.error(request, "You input two different amounts. Please try again.")
@@ -78,14 +85,14 @@ def deposit(request):
 
 
 def withdraw(request):
-    account_from = Account.objects.get(account_number=request.POST.get('account_from'))
     amount = Decimal(request.POST.get('amount'))
-
     error = False
-    if not account_from:
+
+    try:
+        account_from = Account.objects.get(account_number=request.POST.get('account_from'))
+    except ObjectDoesNotExist:
         messages.error(request, "Account {} not found."
-            .format(mask_account_number(account_from.account_number)))
-        error = True
+            .format(request.POST.get('account_from')))
         return
     if account_from.balance < amount:
         messages.error(request, "Your balance is too low.")
