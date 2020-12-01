@@ -8,7 +8,8 @@
 </head>
 <body>
   <div class="titlebar">
-    <h1>BANKit</h1>
+    {% load static %}
+		<img src="{% static 'users/BANKit.svg' %}" alt="Bankit logo">
   </div>
   <div class="navbar">
     <a class="navbar-item" href="/dashboard">Dashboard</a>
@@ -22,6 +23,10 @@
   <div class="page-content">
     <!-- Deposits table -->
     <table cellspacing="0" id="pagetable" style="width:100%">
+        <tr>
+          <td colspan="2">Account #: </td>
+          <td colspan="2">Balance($): </td>
+        </tr>
         <tr>
           <th colspan="3" style= "text-align: center;">Transaction History</th>
         </tr>
@@ -63,7 +68,7 @@
     width:fit-content;
     overflow: hidden;
     text-align: center;
-    max-height: 70px;
+    max-height: 100px;
     position:sticky;
   }
   .navbar{
@@ -71,13 +76,15 @@
     height: 70px;
     width: 100%;
     margin-bottom: 5px;
-    
+    display:flex; 
+    justify-content: space-evenly;
   }
   .navbar-item{
     padding: 12px 24px;
     display: inline-flex;
     border-style: groove;
-    text-decoration: none;
+    text-decoration:underline;
+    font-style: italic;
   }
   .page-content {
     top: 28px;
@@ -104,6 +111,7 @@
   }
   #pagetable td{
     border-bottom: thin solid black;
+    border-top: thin solid black;
   }
   #pagetable td:last-child{
     border-right: thin solid black;
