@@ -8,9 +8,9 @@
 </head>
 <body>
   <div class="titlebar">
-    <h1>BANKit</h1>
+    <img src="BANKit.svg" alt="Bankit logo">
   </div>
-  <div class="navbar">
+  <div class="navbar" style="display:flex; justify-content: space-evenly;">
     <a class="navbar-item" href="/dashboard">Dashboard</a>
     <a class="navbar-item" href="/transfer">Transfer</a>
     <a class="navbar-item" href="/withdraw">Withdraw</a>
@@ -121,7 +121,7 @@
     width:fit-content;
     overflow: hidden;
     text-align: center;
-    max-height: 70px;
+    max-height: 100px;
     position:sticky;
   }
   .navbar{
@@ -129,12 +129,15 @@
     height: 70px;
     width: 100%;
     margin-bottom: 5px;
+    display:flex; 
+    justify-content: space-evenly;
   }
   .navbar-item{
     padding: 12px 24px;
     display: inline-flex;
     border-style: groove;
-    text-decoration: none;
+    text-decoration:underline;
+    font-style: italic;
   }
   .page-content {
     top: 28px;
