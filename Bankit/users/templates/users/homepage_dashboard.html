@@ -20,37 +20,31 @@
     <a class="navbar-item" href="/logout">Sign Out</a>
   </div>
   <div class="page-content">
-    <!-- Deposits table -->
-    <table cellspacing="0" id="pagetable" style="width:100%">
+    <!-- History table -->
+    <table>
+      <thead>
         <tr>
-          <th colspan="3" style= "text-align: center;">Transaction History</th>
+            <th>Account Number</th>
+            <th>Date & Time</th>
+            <th>Transaction Type</th>
+            <th>Amount</th>
+            <th>Description</th>
         </tr>
-        <tr >
-            <td style= "text-align: center;color: gray">Transaction Type</td>
-            <td style= "text-align: center;color:gray" >Date</td>
-            <td style= "text-align: right;color:gray" >Amount</td>
+      </thead>
+
+      <tbody>
+      {% for h in history %}
+          <tr>
+          <td>{{h.account_number}}</td>
+          <td>{{h.datetime}}</td>
+          <td>{{h.get_transaction_type_display}}</td>
+          <td>{{h.amount}}</td>
+          <td>{{h.description}}</td>
         </tr>
-        <tr>
-          <td style="text-align: center;">Deposit</td>
-          <td style="text-align: center;">November 21,2020</td>
-          <td style="text-align: right;"> $77.40</td>
-        </tr>
-        <tr>
-          <td style="text-align: center;">Withdraw</td>
-          <td style="text-align: center;">November 23,2020</td>
-          <td style="text-align: right;"> $20.00</td>
-        </tr>
-        <tr>
-          <td style="text-align: center;">Transfer</td>
-          <td style="text-align: center;">November 27,2020</td>
-          <td style="text-align: right;"> $900.00</td>
-        </tr>
-        <tr>
-          <td colspan="3" style="text-align: center;">
-            <a href="homepage.html">expand</a>
-          </td>
-        </tr>
-      </table>
+      {% endfor %}
+      </tbody>
+    </table>
+
   </div>
   {% for message in messages %}
     <p>{{message}}</p>
