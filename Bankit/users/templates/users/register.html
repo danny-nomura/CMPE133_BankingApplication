@@ -130,6 +130,9 @@
 						Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
 					</div>
 				</div>
+				{% for message in messages %}
+    			<p>{{message}}</p>
+  				{% endfor %}
 			</div>
 		</div>
 	</div>

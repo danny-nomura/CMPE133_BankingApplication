@@ -25,7 +25,7 @@ def register_home(request):
             transactions.generate_account_number(user)
             return redirect("login")
         else:
-            print(form.errors)
+            messages.error(request, form.errors)
 
     context = {'form': form}
     return render(request, 'users/register.html', context)
