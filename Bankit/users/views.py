@@ -52,8 +52,15 @@ def login_home(request):
 @login_required
 def user_dashboard(request):
     number = Account.objects.get(user_id=request.user).account_number
-    history = History.objects.filter(account_number=number).order_by('-datetime')
-    return render(request, 'users/homepage_dashboard.html', {'history': history})
+    history = History.objects.filter(
+        account_number=number).order_by('-datetime')
+    accou = Account.objects.get(user_id=request.user).balance
+
+    context = {
+        'accou': accou,
+        'history': history
+    }
+    return render(request, 'users/homepage_dashboard.html', context)
 
 
 @login_required
