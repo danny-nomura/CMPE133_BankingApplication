@@ -1,1 +1,1 @@
-python ./Bankit/manage.py runserver
+web: gunicorn Bankit.Bankit.wsgi
