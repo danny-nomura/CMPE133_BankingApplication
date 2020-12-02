@@ -20,15 +20,19 @@
     <a class="navbar-item" href="/logout">Sign Out</a>
   </div>
   <div class="page-content">
+    <table cellspacing="0" class="greybackground" style="width:100%">
+    <tr>
+      <td>
     <!-- History table -->
-    <div class="account_info">
-      <h4>Account Number: {{account_number}}<h4>
-      <h4>Balance: ${{balance}}</h4>
-    </div>
+    <table id="tableintable" style="padding: 5px;width: 300px; margin: auto; border-radius: 10px;">
+      <tr>
+        <td style="text-align: center; border-radius: 10px">Account Number: {{account_number}}</td>
+        <td style="text-align: center; border-radius: 10px">Balance: ${{balance}}</td>
+      </tr>
     
     <table>
       <thead>
-        <tr>
+        <tr class="backgroundrow">
             <th>Account Number</th>
             <th>Date & Time</th>
             <th>Transaction Type</th>
@@ -40,19 +44,28 @@
       <tbody>
       {% for h in history %}
           <tr>
-          <td>{{h.account_number}}</td>
-          <td>{{h.datetime}}</td>
-          <td>{{h.get_transaction_type_display}}</td>
-          <td>${{h.amount}}</td>
-          <td>{{h.description}}</td>
+          <td id="history">{{h.account_number}}</td>
+          <td id="history">{{h.datetime}}</td>
+          <td id="history">{{h.get_transaction_type_display}}</td>
+          <td id="history">${{h.amount}}</td>
+          <td id="history">{{h.description}}</td>
         </tr>
       {% endfor %}
       </tbody>
     </table>
-
+  </td>
+  </tr>
+    </table>
   </div>
 </body>
 <style>
+  .greybackground{
+background: darkgray !important;
+  }
+  .backgroundrow{
+    background: darkgray !important;
+    background-color: darkgray !important;
+  }
   .account_info{
     text-align: center;
     text-decoration: underline;
@@ -92,15 +105,20 @@
   }
   table{
     width: 100%;
-    background-color: darkgray;
+    padding: 5px;
+    background-color: darkgray !important;
   }
   th{
-    background-color:lightgray;
+    background-color:lightgray !important;
     padding-top: 7px;
     padding-bottom: 7px;
     text-align: center;
   }
-  td{
+  #tableintable td{
+    padding: 5px;
+    background-color: white;
+  }
+  td #history{
     padding: 5px;
     margin: 10px;
     text-align: center;
