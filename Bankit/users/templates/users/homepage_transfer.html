@@ -61,12 +61,21 @@
           </td>
         </tr>
         <tr id="row_4">
-          <td style= "text-align: center;color: gray">&nbsp;</td>
-          <td style= "text-align: right;color:gray">&nbsp;</td>
-        </tr>
-        <tr id="row_5">
-          <td>&nbsp;</td>
-          <td style="text-align: right;">&nbsp;</td>
+          <td style='align-items: center;'>
+            <div style='text-align: center;'>
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.tags == 'success'%}
+                    <p style='color:darkgreen;'> {{ message }} </p>
+                  {% elif message.tags == 'info'%}
+                    <p style='color:darkblue;'> {{ message }} </p>
+                  {% elif message.tags == 'error'%}
+                    <p style='color:darkred;'> {{ message }} </p>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+          </td>
         </tr>
         <tr id="row_6">                
           <td style="align-items: center;"> 
@@ -85,15 +94,11 @@
       </form>
     </table>
   </div>
-  {% for message in messages %}
-    <p>{{message}}</p>
-  {% endfor %}
 </body>
 <style>
   .titlebar {
     color:black;
     background-color: #a9f5ba;
-    width:fit-content;
     overflow: hidden;
     text-align: center;
     max-height: 130px;
@@ -101,11 +106,11 @@
   }
   .navbar{
     background-color: #a9f5ba;
-    height: 70px;
     width: 100%;
     margin-bottom: 5px;
     display:flex; 
     justify-content: space-evenly;
+    padding-bottom: 10px;
   }
   .navbar-item{
     padding: 12px 24px;
@@ -140,6 +145,7 @@
   #pagetable{
     background-color: darkgray ;
     padding:5px;
+    padding-top: 15px;
   }
   #tableintable{
     background-color: white;

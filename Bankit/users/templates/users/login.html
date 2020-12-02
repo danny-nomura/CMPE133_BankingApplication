@@ -106,10 +106,20 @@
 					</form>
 
 				</div>
-        
-                {% for message in messages %}
-                    <p>{{message}}</p>
-                {% endfor %}
+				<div style='text-align: center; margin-top: 15px'>
+					
+					{% if messages %}
+					  {% for message in messages %}
+						{% if message.tags == 'success'%}
+						  <p style='color:darkgreen;'> {{ message }} </p>
+						{% elif message.tags == 'info'%}
+						  <p style='color:darkblue;'> {{ message }} </p>
+						{% elif message.tags == 'error'%}
+						  <p style='color:darkred;'> {{ message }} </p>
+						{% endif %}
+					  {% endfor %}
+					{% endif %}
+				  </div>
 				</div>
 			</div>
 		</div>
