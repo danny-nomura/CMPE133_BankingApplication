@@ -45,7 +45,7 @@ def transfer(request):
         new_transaction_to = History(
             account_number=account_to, 
             transaction_type="T",
-            amount=amount*-1,
+            amount=amount,
             description="Transferred from {}"
                 .format(mask_account_number(account_from.account_number)),
         )

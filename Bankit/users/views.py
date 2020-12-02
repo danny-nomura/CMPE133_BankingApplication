@@ -21,10 +21,13 @@ def register_home(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            form.save()
-            user = User.objects.get(username=form.cleaned_data['username'])
-            transactions.generate_account_number(user)
-            return redirect("login")
+            if User.objects.filter(email=form.cleaned_data['email']).exists():
+                messages.error(request, "Email already exists.")
+            else:
+                form.save()
+                user = User.objects.get(username=form.cleaned_data['username'])
+                transactions.generate_account_number(user)
+                return redirect("login")
         else:
             messages.error(request, form.errors)
 
