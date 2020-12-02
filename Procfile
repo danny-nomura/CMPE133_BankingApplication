@@ -1,1 +1,1 @@
-python manage.py runserver
+python ./Bankit/manage.py runserver
